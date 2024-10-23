@@ -27,7 +27,9 @@ public class FlightService {
         return flightRepository.findById(id).orElseThrow(()-> new RuntimeException("Flight not found"));
     }
 
-    public Flight createFlight(String flightNumber, String flightType, String departureCity, String destinationCity, Long aircraftId, LocalDate departureDate, LocalDate arrivalDate, LocalTime departureTime, LocalTime arrivalTime, Float price, Float taxPercentage, Float surcharge){
+    public Flight createFlight(String flightNumber, String flightType, String departureCity, String destinationCity,
+                               Long aircraftId, LocalDate departureDate, LocalDate arrivalDate, LocalTime departureTime,
+                               LocalTime arrivalTime, Float price, Float taxPercentage, Float surcharge){
         Aircraft aircraft = aircraftService.findAircraftById(aircraftId);
         Flight flight = new Flight();
         flight.setFlightNumber(flightNumber);
@@ -45,9 +47,10 @@ public class FlightService {
         return flightRepository.save(flight);
     }
 
-    public Flight updateFlight(Long id, String flightNumber, String flightType, String departureCity, String destinationCity, Long aircraftId, LocalDate departureDate, LocalDate arrivalDate, LocalTime departureTime, LocalTime arrivalTime, Float price, Float taxPercentage, Float surcharge){
+    public Flight updateFlight(Long id, String flightNumber, String flightType, String departureCity, String destinationCity,
+                               Long aircraftId, LocalDate departureDate, LocalDate arrivalDate, LocalTime departureTime,
+                               LocalTime arrivalTime, Float price, Float taxPercentage, Float surcharge){
         Flight flight = findFlightById(id);
-        if(flight != null){
             if(flightNumber != null){
                 flight.setFlightNumber(flightNumber);
             }
@@ -90,9 +93,7 @@ public class FlightService {
                 flight.setSurcharge(surcharge);
             }
             return flightRepository.save(flight);
-        }else{
-            throw new RuntimeException("Flight not found");
-        }
+
     }
 
     public void deleteFlight(Long id){

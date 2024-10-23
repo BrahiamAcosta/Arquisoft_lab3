@@ -25,12 +25,15 @@ public class FlightController {
     }
 
     @QueryMapping
-    public Flight flightById(Long id){
+    public Flight flightById(@Argument Long id){
         return flightService.findFlightById(id);
     }
 
     @MutationMapping
-    public Flight createFlight(@Argument String flightNumber, @Argument String flightType, @Argument String departureCity, @Argument String destinationCity, @Argument Long aircraftId, @Argument String departureDate, @Argument String arrivalDate, @Argument String departureTime, @Argument String arrivalTime, @Argument Float price, @Argument Float taxPercentage, @Argument Float surcharge){
+    public Flight createFlight(@Argument String flightNumber, @Argument String flightType, @Argument String departureCity,
+                               @Argument String destinationCity, @Argument Long aircraftId, @Argument String departureDate,
+                               @Argument String arrivalDate, @Argument String departureTime, @Argument String arrivalTime,
+                               @Argument Float price, @Argument Float taxPercentage, @Argument Float surcharge){
         LocalDate depDate = LocalDate.parse(departureDate);
         LocalDate arrDate = LocalDate.parse(arrivalDate);
         LocalTime depTime = LocalTime.parse(departureTime);
@@ -39,7 +42,10 @@ public class FlightController {
     }
 
     @MutationMapping
-    public Flight updateFlight(@Argument Long id, @Argument String flightNumber, @Argument String flightType, @Argument String departureCity, @Argument String destinationCity, @Argument Long aircraftId, @Argument String departureDate, @Argument String arrivalDate, @Argument String departureTime, @Argument String arrivalTime, @Argument Float price, @Argument Float taxPercentage, @Argument Float surcharge){
+    public Flight updateFlight(@Argument Long id, @Argument String flightNumber, @Argument String flightType,
+                               @Argument String departureCity, @Argument String destinationCity, @Argument Long aircraftId,
+                               @Argument String departureDate, @Argument String arrivalDate, @Argument String departureTime,
+                               @Argument String arrivalTime, @Argument Float price, @Argument Float taxPercentage, @Argument Float surcharge){
         LocalDate depDate = LocalDate.parse(departureDate);
         LocalDate arrDate = LocalDate.parse(arrivalDate);
         LocalTime depTime = LocalTime.parse(departureTime);
