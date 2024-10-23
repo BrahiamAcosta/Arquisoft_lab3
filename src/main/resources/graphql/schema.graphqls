@@ -1,0 +1,39 @@
+type Aircraft {
+    id: ID!
+    aircraftModel: String!
+    maxSeats: Int!
+    seatConfiguration: String!
+    flights:[Flight!]!
+}
+
+type Flight {
+    id: ID!
+    flightNumber: String!
+    flightType: String!
+    departureCity: String!
+    destinationCity: String!
+    departureDate: String!
+    arrivalDate: String!
+    departureTime: String!
+    arrivalTime: String!
+    price: Float!
+    taxPercentage: Float!
+    surcharge: Float!
+    aircraft: Aircraft!
+}
+
+type Query {
+    allAircrafts: [Aircraft]
+    aircraftById(id: ID!): Aircraft
+    allFlights: [Flight]
+    flightById(id: ID!): Flight
+}
+
+type Mutation {
+    createAircraft(aircraftModel: String!, maxSeats: Int!, seatConfiguration: String!): Aircraft
+    updateAircraft(id: ID!, aircraftModel: String, maxSeats: Int, seatConfiguration: String): Aircraft
+    deleteAircraft(id: ID!): Boolean
+    createFlight(flightNumber: String!, flightType: String!, departureCity: String!, destinationCity: String!, departureDate: String!, arrivalDate: String!, departureTime: String!, arrivalTime: String!, price: Float!, taxPercentage: Float!, surcharge: Float!, aircraftId: ID!): Flight
+    updateFlight(id: ID!, flightNumber: String, flightType: String, departureCity: String, destinationCity: String, departureDate: String, arrivalDate: String, departureTime: String, arrivalTime: String, price: Float, taxPercentage: Float, surcharge: Float, aircraftId: ID): Flight
+    deleteFlight(id: ID!): Flight
+}
